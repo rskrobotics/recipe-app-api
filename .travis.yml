@@ -11,4 +11,6 @@ before_install:
   - echo $DOCKER_PASSWORD | docker login --username $DOCKER_USERNAME --password-stdin
 
 script:
-  - docker-compose run app sh -c "python manage.py test && flake8"
+  - docker-compose run app sh -c "python manage.py wait_for_db &&
+                                  python manage.py test &&
+                                  flake8"
