@@ -5,7 +5,7 @@ from core.models import Tag, Ingredient, Recipe
 from recipe import serializers
 
 
-class BaseRecipeAttrViewset(viewsets.GenericViewSet,
+class BaseRecipeAttrViewSet(viewsets.GenericViewSet,
                             mixins.ListModelMixin,
                             mixins.CreateModelMixin):
     '''Base viewset for user owned recipe attributes'''
@@ -21,13 +21,13 @@ class BaseRecipeAttrViewset(viewsets.GenericViewSet,
         serializer.save(user=self.request.user)
 
 
-class TagViewSet(BaseRecipeAttrViewset):
+class TagViewSet(BaseRecipeAttrViewSet):
     '''Manage tags in the database'''
     queryset = Tag.objects.all()
     serializer_class = serializers.TagSerializer
 
 
-class IngredientViewSet(BaseRecipeAttrViewset):
+class IngredientViewSet(BaseRecipeAttrViewSet):
     '''Manage ingredients in the database'''
     queryset = Ingredient.objects.all()
     serializer_class = serializers.IngredientSerializer
@@ -48,7 +48,6 @@ class RecipeViewSet(viewsets.ModelViewSet):
         '''Return the appropriate serializer class'''
         if self.action == 'retrieve':
             return serializers.RecipeDetailSerializer
-
         return self.serializer_class
 
     def perform_create(self, serializer):
