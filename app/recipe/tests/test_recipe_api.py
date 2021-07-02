@@ -226,7 +226,7 @@ class RecipeImageUploadTests(TestCase):
         recipe1 = sample_recipe(user=self.user, title='Thai Curry CZIKEN')
         recipe2 = sample_recipe(user=self.user, title='KURAG z RYBY')
         tag1 = sample_tag(user=self.user, name='Cziken')
-        tag2 = sample_tag(user=self.user, name= "Ryba")
+        tag2 = sample_tag(user=self.user, name="Ryba")
         recipe1.tags.add(tag1)
         recipe2.tags.add(tag2)
         recipe3 = sample_recipe(user=self.user, title='PUSTY TALESZ')

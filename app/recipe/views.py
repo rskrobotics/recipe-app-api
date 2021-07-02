@@ -57,7 +57,7 @@ class RecipeViewSet(viewsets.ModelViewSet):
         if ingredients:
             ingredients_ids = self._params_to_ints(ingredients)
             queryset = queryset.filter(ingredients__id__in=ingredients_ids)
-        return self.queryset.filter(user=self.request.user)
+        return queryset.filter(user=self.request.user)
 
     def get_serializer_class(self):
         '''Return the appropriate serializer class'''
